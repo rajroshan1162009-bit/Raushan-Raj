@@ -1,6 +1,48 @@
-to - do application project.
-where it takes an input from user to record his task.
-and view all that he recorded.
-and also he can mark his task as completed.
-and view the completed task.
-and if he want to Exit he can.
+#  Task Manager
+completed_task = set()
+tasks = []
+while True:
+    try:
+        print('---Task Manager---\nMenu:\n1. Add Task\n2. View All Task\n3. Mark Task as Completed\n4. View Completed Task\n5. Exit')
+        choice = input('Choose btw 1-5: ').strip()
+        # 1. Add Task
+        if choice == '1':
+            user_task = input('Enter your task: ').strip()
+            tasks.append(user_task)
+            print('Task Added Successfully✅')
+        # 2. View All Task
+        elif choice == '2':
+            if not tasks:
+                print('No task available!📃')
+            else:
+                for i,task in enumerate(tasks,start=1):
+                    print(f'{i}.{task}')
+        # 3. Mark Task as Complete
+        elif choice == '3':
+            if not tasks:
+                print('No task available!📃')
+            else:
+                task_name = (input('Enter task name to mark as done: ')).strip()
+                if task_name in tasks:
+                    completed_task.add(task_name)
+                    print('Task Marked as complete')
+                else:
+                    print('No Task Found')
+        # 4. View completed Task
+        elif choice == '4':
+            if not completed_task:
+                print('No Completed Task available!📃')
+            else:
+                for each_task in completed_task:
+                    print(each_task)
+        # 5. EXIT
+        elif choice == '5':
+            print('Exiting Program!')
+            print('Thank You For Using Task Manager!')
+            break
+        else:
+            print('Invalid Choice! Please enter btw 1-5.')
+    except ValueError:
+        print('Enter the valvue Correctly!')
+    except TypeError:
+        print('Enter the value correctly!')
